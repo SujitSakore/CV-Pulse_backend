@@ -8,7 +8,11 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-app.use(cors());
+app.use(cors({
+  origin: 'https://resume-score-frontend.netlify.app/',
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true // if you're using cookies or sessions
+}));
 app.use(express.json());
 
 app.use('/api', resumeRoutes);
